@@ -1,0 +1,21 @@
+[2024-04-23T12:36:35.726+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.read_equipements manual__2024-04-23T11:54:48.966898+00:00 [queued]>
+[2024-04-23T12:36:35.731+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.read_equipements manual__2024-04-23T11:54:48.966898+00:00 [queued]>
+[2024-04-23T12:36:35.732+0000] {taskinstance.py:2193} INFO - Starting attempt 5 of 5
+[2024-04-23T12:36:35.741+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): read_equipements> on 2024-04-23 11:54:48.966898+00:00
+[2024-04-23T12:36:35.744+0000] {standard_task_runner.py:60} INFO - Started process 144772 to run task
+[2024-04-23T12:36:35.746+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'read_equipements', 'manual__2024-04-23T11:54:48.966898+00:00', '--job-id', '287', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmp7d8xuiae']
+[2024-04-23T12:36:35.747+0000] {standard_task_runner.py:88} INFO - Job 287: Subtask read_equipements
+[2024-04-23T12:36:35.769+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.read_equipements manual__2024-04-23T11:54:48.966898+00:00 [running]> on host datalab-yasmine
+[2024-04-23T12:36:35.919+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='read_equipements' AIRFLOW_CTX_EXECUTION_DATE='2024-04-23T11:54:48.966898+00:00' AIRFLOW_CTX_TRY_NUMBER='5' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-23T11:54:48.966898+00:00'
+[2024-04-23T12:36:35.920+0000] {pipeline_eq.py:65} INFO - get date
+[2024-04-23T12:36:35.920+0000] {rw.py:43} INFO - start to get objects in minio
+[2024-04-23T12:36:35.920+0000] {rw.py:45} INFO - get objects
+[2024-04-23T12:36:35.920+0000] {rw.py:48} INFO - get good objects
+[2024-04-23T12:36:38.686+0000] {logging_mixin.py:188} INFO - {'start': '2024-04-23 11:54:48', 'end': '2024-04-23 12:03:59'}
+[2024-04-23T12:36:38.686+0000] {pipeline_eq.py:73} INFO - start to get objects in minio
+[2024-04-23T12:36:38.686+0000] {logging_mixin.py:188} INFO - intervals is {'start': '2024-04-23 11:54:48', 'end': '2024-04-23 12:03:59'}
+[2024-04-23T12:36:58.905+0000] {python.py:202} INFO - Done. Returned value was: []
+[2024-04-23T12:36:58.917+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=read_equipements, execution_date=20240423T115448, start_date=20240423T123635, end_date=20240423T123658
+[2024-04-23T12:36:58.960+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-23T12:36:58.993+0000] {abstractoperator.py:567} INFO - Marking <TaskInstance: pipeline_eq.push_in_redis manual__2024-04-23T11:54:48.966898+00:00 [None]> as SKIPPED since the map has 0 values to expand
+[2024-04-23T12:36:58.997+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

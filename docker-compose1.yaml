@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  minio:
+    image: quay.io/minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ~/data/minio_storage:/data
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: miniopwd
+    command: server --console-address ":9001" /data
+  redis:
+    image:  redis/redis-stack-server:7.2.0-v6
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+    volumes:
+      - ~/data/redis_data:/data
+  
+   
+  
+
+

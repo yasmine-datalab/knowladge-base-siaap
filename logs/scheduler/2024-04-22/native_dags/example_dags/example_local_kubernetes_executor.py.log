@@ -1,0 +1,22 @@
+[2024-04-22T16:46:33.690+0000] {processor.py:161} INFO - Started process (PID=155633) to work on /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2024-04-22T16:46:33.691+0000] {processor.py:830} INFO - Processing file /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py for tasks to queue
+[2024-04-22T16:46:33.691+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:33.691+0000] {dagbag.py:540} INFO - Filling up the DagBag from /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2024-04-22T16:46:33.694+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:33.694+0000] {example_local_kubernetes_executor.py:39} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2024-04-22T16:46:33.695+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:33.694+0000] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2024-04-22T16:46:33.695+0000] {processor.py:842} WARNING - No viable dags retrieved from /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2024-04-22T16:46:33.702+0000] {processor.py:183} INFO - Processing /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.015 seconds
+[2024-04-22T16:47:26.283+0000] {processor.py:161} INFO - Started process (PID=156351) to work on /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2024-04-22T16:47:26.284+0000] {processor.py:830} INFO - Processing file /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py for tasks to queue
+[2024-04-22T16:47:26.285+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:47:26.284+0000] {dagbag.py:540} INFO - Filling up the DagBag from /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2024-04-22T16:47:26.287+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:47:26.287+0000] {example_local_kubernetes_executor.py:39} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2024-04-22T16:47:26.287+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:47:26.287+0000] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2024-04-22T16:47:26.287+0000] {processor.py:842} WARNING - No viable dags retrieved from /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2024-04-22T16:47:26.294+0000] {processor.py:183} INFO - Processing /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.013 seconds

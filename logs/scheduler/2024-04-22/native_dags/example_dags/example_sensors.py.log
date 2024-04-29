@@ -1,0 +1,18 @@
+[2024-04-22T16:46:26.516+0000] {processor.py:161} INFO - Started process (PID=155548) to work on /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py
+[2024-04-22T16:46:26.517+0000] {processor.py:830} INFO - Processing file /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py for tasks to queue
+[2024-04-22T16:46:26.518+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:26.517+0000] {dagbag.py:540} INFO - Filling up the DagBag from /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py
+[2024-04-22T16:46:26.526+0000] {processor.py:840} INFO - DAG(s) 'example_sensors' retrieved from /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py
+[2024-04-22T16:46:26.618+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:26.617+0000] {override.py:1769} INFO - Created Permission View: can delete on DAG:example_sensors
+[2024-04-22T16:46:26.630+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:26.630+0000] {override.py:1769} INFO - Created Permission View: can edit on DAG:example_sensors
+[2024-04-22T16:46:26.639+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:26.639+0000] {override.py:1769} INFO - Created Permission View: can read on DAG:example_sensors
+[2024-04-22T16:46:26.639+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:26.639+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-22T16:46:26.649+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:26.649+0000] {dag.py:3069} INFO - Creating ORM DAG for example_sensors
+[2024-04-22T16:46:26.650+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:46:26.649+0000] {dag.py:3834} INFO - Setting next_dagrun for example_sensors to None, run_after=None
+[2024-04-22T16:46:26.670+0000] {processor.py:183} INFO - Processing /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py took 0.156 seconds
+[2024-04-22T16:47:19.402+0000] {processor.py:161} INFO - Started process (PID=156283) to work on /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py
+[2024-04-22T16:47:19.403+0000] {processor.py:830} INFO - Processing file /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py for tasks to queue
+[2024-04-22T16:47:19.404+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:47:19.403+0000] {dagbag.py:540} INFO - Filling up the DagBag from /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py
+[2024-04-22T16:47:19.411+0000] {processor.py:840} INFO - DAG(s) 'example_sensors' retrieved from /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py
+[2024-04-22T16:47:19.426+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:47:19.426+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-22T16:47:19.435+0000] {logging_mixin.py:188} INFO - [2024-04-22T16:47:19.435+0000] {dag.py:3834} INFO - Setting next_dagrun for example_sensors to None, run_after=None
+[2024-04-22T16:47:19.452+0000] {processor.py:183} INFO - Processing /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/example_dags/example_sensors.py took 0.052 seconds

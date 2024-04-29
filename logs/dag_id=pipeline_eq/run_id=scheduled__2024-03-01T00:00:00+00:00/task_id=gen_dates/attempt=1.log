@@ -1,0 +1,180 @@
+[2024-04-22T19:23:27.250+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-22T19:23:27.257+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-22T19:23:27.257+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-22T19:23:27.270+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-22T19:23:27.275+0000] {standard_task_runner.py:60} INFO - Started process 294441 to run task
+[2024-04-22T19:23:27.277+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '188', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmp73k0ualo']
+[2024-04-22T19:23:27.277+0000] {standard_task_runner.py:88} INFO - Job 188: Subtask gen_dates
+[2024-04-22T19:23:27.312+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-22T19:23:27.347+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-22T19:23:27.377+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-22T19:23:27.378+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/operators/python.py", line 198, in execute
+    self.op_kwargs = self.determine_kwargs(context)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in determine_kwargs
+    return KeywordParameters.determine(self.python_callable, self.op_args, context).unpacking()
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/operator_helpers.py", line 163, in determine
+    raise ValueError(f"The key {name!r} in args is a part of kwargs and therefore reserved.")
+ValueError: The key 'execution_date' in args is a part of kwargs and therefore reserved.
+[2024-04-22T19:23:27.382+0000] {taskinstance.py:1149} INFO - Marking task as FAILED. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240422T192327, end_date=20240422T192327
+[2024-04-22T19:23:27.396+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 188 for task gen_dates (The key 'execution_date' in args is a part of kwargs and therefore reserved.; 294441)
+[2024-04-22T19:23:27.409+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-04-22T19:23:27.426+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-22T19:32:11.532+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-22T19:32:11.540+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-22T19:32:11.540+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-22T19:32:11.553+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-22T19:32:11.558+0000] {standard_task_runner.py:60} INFO - Started process 301883 to run task
+[2024-04-22T19:32:11.560+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '189', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmpgxd7_69e']
+[2024-04-22T19:32:11.561+0000] {standard_task_runner.py:88} INFO - Job 189: Subtask gen_dates
+[2024-04-22T19:32:11.589+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-22T19:32:11.623+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-22T19:32:11.647+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-22T19:32:11.648+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/operators/python.py", line 200, in execute
+    return_value = self.execute_callable()
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/operators/python.py", line 217, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/home/yasmine/Documents/FREELANCE/knowledge-base-siaap/dags/kbs/custom_dags/pipeline_eq.py", line 47, in gen_dates
+    filename = f"dates_{exec_date.date.strftime('%Y-m-%d').replace('-', '')}"
+AttributeError: 'str' object has no attribute 'date'
+[2024-04-22T19:32:11.652+0000] {taskinstance.py:1149} INFO - Marking task as FAILED. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240422T193211, end_date=20240422T193211
+[2024-04-22T19:32:11.664+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 189 for task gen_dates ('str' object has no attribute 'date'; 301883)
+[2024-04-22T19:32:11.692+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-04-22T19:32:11.708+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-22T19:36:48.004+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-22T19:36:48.011+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-22T19:36:48.011+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-22T19:36:48.023+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-22T19:36:48.028+0000] {standard_task_runner.py:60} INFO - Started process 306489 to run task
+[2024-04-22T19:36:48.030+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '191', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmpzarad3wr']
+[2024-04-22T19:36:48.031+0000] {standard_task_runner.py:88} INFO - Job 191: Subtask gen_dates
+[2024-04-22T19:36:48.061+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-22T19:36:48.100+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-22T19:36:48.124+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-22T19:36:48.125+0000] {rw.py:83} INFO - Starting to save files into Minio
+[2024-04-22T19:36:50.177+0000] {python.py:202} INFO - Done. Returned value was: dates_20240301 00:00:00+00:00
+[2024-04-22T19:36:50.189+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240422T193648, end_date=20240422T193650
+[2024-04-22T19:36:50.209+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-22T19:36:50.227+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-23T10:28:54.638+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T10:28:54.643+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T10:28:54.644+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-23T10:28:54.655+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-23T10:28:54.659+0000] {standard_task_runner.py:60} INFO - Started process 23662 to run task
+[2024-04-23T10:28:54.661+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '198', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmp159qpzc9']
+[2024-04-23T10:28:54.662+0000] {standard_task_runner.py:88} INFO - Job 198: Subtask gen_dates
+[2024-04-23T10:28:54.684+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-23T10:28:54.710+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-23T10:28:54.726+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-23T10:28:54.727+0000] {rw.py:82} INFO - Starting to save files into Minio
+[2024-04-23T10:28:57.111+0000] {python.py:202} INFO - Done. Returned value was: dates_20240301 00:00:00+00:00
+[2024-04-23T10:28:57.126+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240423T102854, end_date=20240423T102857
+[2024-04-23T10:28:57.162+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-23T10:28:57.182+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-23T10:37:03.066+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T10:37:03.071+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T10:37:03.071+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-23T10:37:03.081+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-23T10:37:03.083+0000] {standard_task_runner.py:60} INFO - Started process 30542 to run task
+[2024-04-23T10:37:03.086+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '202', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmpd8ywx5b_']
+[2024-04-23T10:37:03.086+0000] {standard_task_runner.py:88} INFO - Job 202: Subtask gen_dates
+[2024-04-23T10:37:03.110+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-23T10:37:03.133+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-23T10:37:03.152+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-23T10:37:03.153+0000] {rw.py:82} INFO - Starting to save files into Minio
+[2024-04-23T10:37:05.416+0000] {python.py:202} INFO - Done. Returned value was: dates_20240301 00:00:00+00:00
+[2024-04-23T10:37:05.433+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240423T103703, end_date=20240423T103705
+[2024-04-23T10:37:05.467+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-23T10:37:05.491+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-23T10:46:35.683+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T10:46:35.690+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T10:46:35.690+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-23T10:46:35.700+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-23T10:46:35.703+0000] {standard_task_runner.py:60} INFO - Started process 38854 to run task
+[2024-04-23T10:46:35.705+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '207', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmpvqr27rn1']
+[2024-04-23T10:46:35.706+0000] {standard_task_runner.py:88} INFO - Job 207: Subtask gen_dates
+[2024-04-23T10:46:35.728+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-23T10:46:35.754+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-23T10:46:35.770+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-23T10:46:35.771+0000] {rw.py:82} INFO - Starting to save files into Minio
+[2024-04-23T10:46:38.204+0000] {connectionpool.py:874} WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'RemoteDisconnected('Remote end closed connection without response')': /intervalles?location=
+[2024-04-23T10:46:39.778+0000] {python.py:202} INFO - Done. Returned value was: dates_20240301
+[2024-04-23T10:46:39.793+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240423T104635, end_date=20240423T104639
+[2024-04-23T10:46:39.814+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-23T10:46:39.842+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-23T11:04:04.280+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T11:04:04.285+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T11:04:04.285+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-23T11:04:04.296+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-23T11:04:04.299+0000] {standard_task_runner.py:60} INFO - Started process 55733 to run task
+[2024-04-23T11:04:04.301+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '217', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmpkgekz0m2']
+[2024-04-23T11:04:04.301+0000] {standard_task_runner.py:88} INFO - Job 217: Subtask gen_dates
+[2024-04-23T11:04:04.326+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-23T11:04:04.350+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-23T11:04:04.368+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-23T11:04:04.369+0000] {rw.py:82} INFO - Starting to save files into Minio
+[2024-04-23T11:04:05.214+0000] {python.py:202} INFO - Done. Returned value was: dates_20240301
+[2024-04-23T11:04:05.224+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240423T110404, end_date=20240423T110405
+[2024-04-23T11:04:05.276+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-23T11:04:05.395+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-23T11:15:41.072+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T11:15:41.076+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T11:15:41.076+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-23T11:15:41.088+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-23T11:15:41.091+0000] {standard_task_runner.py:60} INFO - Started process 68039 to run task
+[2024-04-23T11:15:41.092+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '226', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmp9fy6igpq']
+[2024-04-23T11:15:41.093+0000] {standard_task_runner.py:88} INFO - Job 226: Subtask gen_dates
+[2024-04-23T11:15:41.115+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-23T11:15:41.143+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-23T11:15:41.256+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-23T11:15:41.257+0000] {rw.py:84} INFO - Starting to save files into Minio
+[2024-04-23T11:15:43.026+0000] {python.py:202} INFO - Done. Returned value was: dates_20240301
+[2024-04-23T11:15:43.039+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240423T111541, end_date=20240423T111543
+[2024-04-23T11:15:43.071+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-23T11:15:43.101+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-23T11:17:45.206+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T11:17:45.210+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T11:17:45.211+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-23T11:17:45.222+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-23T11:17:45.225+0000] {standard_task_runner.py:60} INFO - Started process 70862 to run task
+[2024-04-23T11:17:45.227+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '231', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmp9___m3pk']
+[2024-04-23T11:17:45.227+0000] {standard_task_runner.py:88} INFO - Job 231: Subtask gen_dates
+[2024-04-23T11:17:45.248+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-23T11:17:45.275+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-23T11:17:45.385+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-23T11:17:45.385+0000] {rw.py:84} INFO - Starting to save files into Minio
+[2024-04-23T11:17:49.431+0000] {python.py:202} INFO - Done. Returned value was: dates_20240301
+[2024-04-23T11:17:49.447+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240423T111745, end_date=20240423T111749
+[2024-04-23T11:17:49.495+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-23T11:17:49.518+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-23T11:23:18.819+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T11:23:18.823+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [queued]>
+[2024-04-23T11:23:18.824+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-23T11:23:18.834+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): gen_dates> on 2024-03-01 00:00:00+00:00
+[2024-04-23T11:23:18.837+0000] {standard_task_runner.py:60} INFO - Started process 79232 to run task
+[2024-04-23T11:23:18.839+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'gen_dates', 'scheduled__2024-03-01T00:00:00+00:00', '--job-id', '259', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmp1mqs73au']
+[2024-04-23T11:23:18.839+0000] {standard_task_runner.py:88} INFO - Job 259: Subtask gen_dates
+[2024-04-23T11:23:18.863+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.gen_dates scheduled__2024-03-01T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-23T11:23:18.889+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-23T11:23:19.005+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='gen_dates' AIRFLOW_CTX_EXECUTION_DATE='2024-03-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-01T00:00:00+00:00'
+[2024-04-23T11:23:19.006+0000] {logging_mixin.py:188} INFO - {'start': '2024-03-01 00:00:00+00:00', 'end': '2024-04-23 11:23:19'}
+[2024-04-23T11:23:19.006+0000] {rw.py:84} INFO - Starting to save files into Minio
+[2024-04-23T11:23:21.010+0000] {python.py:202} INFO - Done. Returned value was: dates_20240301
+[2024-04-23T11:23:21.028+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=gen_dates, execution_date=20240301T000000, start_date=20240423T112318, end_date=20240423T112321
+[2024-04-23T11:23:21.059+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-23T11:23:21.072+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check

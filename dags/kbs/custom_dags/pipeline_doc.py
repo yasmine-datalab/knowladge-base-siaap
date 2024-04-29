@@ -91,8 +91,13 @@ def equipement_process():
         logging.info("start to push data in redis")
         #file = MINIO_CLIENT.get_object(CONFIG["bucket"], obj)
         file = MINIO_CLIENT.get_object('siaap-doe', obj)
-        if obj.lower().endswith(".pdf")
-        data = json.load(io.BytesIO(file.data))
+        if obj.lower().endswith([".xls", ".xlsx"]):
+            data = extract(file.data)
+            data = json.dumps(data, ensure_ascii=False, indent=2)
+        #if obj.lower().endswith(".pdf"):
+            
+        else:
+            data = json.load(io.BytesIO(file.data))
         key = str(uuid.uuid1)
         REDIS_CLIENT.json().set(key, path.Path.root_path(), data)
         logging.info(f"{obj.split()[-1]} in redis")

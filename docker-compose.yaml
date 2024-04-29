@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  airflow:
+    image: apache/airflow:2.9.0
+    ports: 
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags 
+    environment:
+      _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- pandas PyMuPDF redis }
+
+  redis-stack:
+    image:  redis/redis-stack-server:7.2.0-v6
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+    volumes:
+      - ./data/redis_data:/data
+
+  # api_service:
+  #   build: .
+  #   ports:
+  #     - "8000:8000"  # Expose the API on port 8000
+  #   environment:
+  #     MINIO_URL: "minio1:9000"
+  #     MINIO_ACCESS_KEY: "minioadmin"
+  #     MINIO_SECRET_KEY: "minioadmin"
+  #     REDIS_URL: "redis-stack"
+  #     REDIS_PORT: 6379
+  #     REDIS_PASSWORD: "myredis"
+  #   volumes:
+  #     - ./app1/:/usr/src/app
+  #   depends_on:
+  #     - redis-stack
+      
+

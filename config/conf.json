@@ -1,0 +1,8 @@
+{
+    "bucket":"extracted",
+    "redisUser": "myredisuser",
+    "redisHost":"127.0.0.1",
+    "redisPassword": "myredispwd",
+    "redisPort": 6379
+
+}

@@ -1,0 +1,77 @@
+[2024-04-22T16:57:24.106+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.read_equipements scheduled__2024-03-24T00:00:00+00:00 [queued]>
+[2024-04-22T16:57:24.113+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.read_equipements scheduled__2024-03-24T00:00:00+00:00 [queued]>
+[2024-04-22T16:57:24.113+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-22T16:57:24.124+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): read_equipements> on 2024-03-24 00:00:00+00:00
+[2024-04-22T16:57:24.127+0000] {standard_task_runner.py:60} INFO - Started process 167063 to run task
+[2024-04-22T16:57:24.129+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'read_equipements', 'scheduled__2024-03-24T00:00:00+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmpmsx7y0n7']
+[2024-04-22T16:57:24.130+0000] {standard_task_runner.py:88} INFO - Job 30: Subtask read_equipements
+[2024-04-22T16:57:24.159+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.read_equipements scheduled__2024-03-24T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-22T16:57:24.209+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='read_equipements' AIRFLOW_CTX_EXECUTION_DATE='2024-03-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-24T00:00:00+00:00'
+[2024-04-22T16:57:24.210+0000] {pipeline_eq.py:47} INFO - start to get objects in minio
+[2024-04-22T16:57:24.215+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'prev_execution_date_success' from the template is deprecated and will be removed in a future version. Please use 'prev_data_interval_start_success' instead.
+[2024-04-22T16:57:24.215+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/operators/python.py", line 200, in execute
+    return_value = self.execute_callable()
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/operators/python.py", line 217, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/home/yasmine/Documents/FREELANCE/knowledge-base-siaap/dags/kbs/custom_dags/pipeline_eq.py", line 48, in read_equipements
+    intervals =[context['prev_execution_date_success'].date, context['execution_date'].date]
+AttributeError: 'NoneType' object has no attribute 'date'
+[2024-04-22T16:57:24.219+0000] {taskinstance.py:1149} INFO - Marking task as FAILED. dag_id=pipeline_eq, task_id=read_equipements, execution_date=20240324T000000, start_date=20240422T165724, end_date=20240422T165724
+[2024-04-22T16:57:24.229+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 30 for task read_equipements ('NoneType' object has no attribute 'date'; 167063)
+[2024-04-22T16:57:24.261+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-04-22T16:57:24.279+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-22T17:39:44.987+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.read_equipements scheduled__2024-03-24T00:00:00+00:00 [queued]>
+[2024-04-22T17:39:44.996+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.read_equipements scheduled__2024-03-24T00:00:00+00:00 [queued]>
+[2024-04-22T17:39:44.996+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-22T17:39:45.012+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): read_equipements> on 2024-03-24 00:00:00+00:00
+[2024-04-22T17:39:45.016+0000] {standard_task_runner.py:60} INFO - Started process 204055 to run task
+[2024-04-22T17:39:45.018+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'read_equipements', 'scheduled__2024-03-24T00:00:00+00:00', '--job-id', '85', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmpzb5ion0s']
+[2024-04-22T17:39:45.019+0000] {standard_task_runner.py:88} INFO - Job 85: Subtask read_equipements
+[2024-04-22T17:39:45.053+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.read_equipements scheduled__2024-03-24T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-22T17:39:45.106+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='read_equipements' AIRFLOW_CTX_EXECUTION_DATE='2024-03-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-24T00:00:00+00:00'
+[2024-04-22T17:39:45.107+0000] {pipeline_eq.py:48} INFO - start to get objects in minio
+[2024-04-22T17:39:45.112+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'prev_execution_date_success' from the template is deprecated and will be removed in a future version. Please use 'prev_data_interval_start_success' instead.
+[2024-04-22T17:39:45.112+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/operators/python.py", line 200, in execute
+    return_value = self.execute_callable()
+  File "/home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/operators/python.py", line 217, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/home/yasmine/Documents/FREELANCE/knowledge-base-siaap/dags/kbs/custom_dags/pipeline_eq.py", line 49, in read_equipements
+    intervals =[context['prev_execution_date_success'], context['execution_date']] if context['prev_execution_date_success'] else [context['start_date'], context['execution_date']]
+KeyError: 'start_date'
+[2024-04-22T17:39:45.116+0000] {taskinstance.py:1149} INFO - Marking task as FAILED. dag_id=pipeline_eq, task_id=read_equipements, execution_date=20240324T000000, start_date=20240422T173944, end_date=20240422T173945
+[2024-04-22T17:39:45.127+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 85 for task read_equipements ('start_date'; 204055)
+[2024-04-22T17:39:45.150+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-04-22T17:39:45.164+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-22T18:18:41.434+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.read_equipements scheduled__2024-03-24T00:00:00+00:00 [queued]>
+[2024-04-22T18:18:41.441+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.read_equipements scheduled__2024-03-24T00:00:00+00:00 [queued]>
+[2024-04-22T18:18:41.442+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-22T18:18:41.463+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): read_equipements> on 2024-03-24 00:00:00+00:00
+[2024-04-22T18:18:41.469+0000] {standard_task_runner.py:60} INFO - Started process 237409 to run task
+[2024-04-22T18:18:41.473+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'read_equipements', 'scheduled__2024-03-24T00:00:00+00:00', '--job-id', '118', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmpklc_jq8i']
+[2024-04-22T18:18:41.474+0000] {standard_task_runner.py:88} INFO - Job 118: Subtask read_equipements
+[2024-04-22T18:18:41.518+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.read_equipements scheduled__2024-03-24T00:00:00+00:00 [running]> on host datalab-yasmine
+[2024-04-22T18:18:41.561+0000] {logging_mixin.py:188} WARNING - /home/yasmine/.local/share/virtualenvs/knowledge-base-siaap-WvBZnYs-/lib/python3.8/site-packages/airflow/utils/context.py:207 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2024-04-22T18:18:41.583+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='read_equipements' AIRFLOW_CTX_EXECUTION_DATE='2024-03-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-24T00:00:00+00:00'
+[2024-04-22T18:18:41.584+0000] {pipeline_eq.py:53} INFO - start to get objects in minio
+[2024-04-22T18:18:41.584+0000] {logging_mixin.py:188} INFO - intervals is ['2024-03-24 00:00:00+00:00', '2024-03-24 00:00:00+00:00']
+[2024-04-22T18:18:43.943+0000] {python.py:202} INFO - Done. Returned value was: []
+[2024-04-22T18:18:43.960+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=read_equipements, execution_date=20240324T000000, start_date=20240422T181841, end_date=20240422T181843
+[2024-04-22T18:18:44.012+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-22T18:18:44.040+0000] {abstractoperator.py:567} INFO - Marking <TaskInstance: pipeline_eq.push_in_redis scheduled__2024-03-24T00:00:00+00:00 [None]> as SKIPPED since the map has 0 values to expand
+[2024-04-22T18:18:44.045+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

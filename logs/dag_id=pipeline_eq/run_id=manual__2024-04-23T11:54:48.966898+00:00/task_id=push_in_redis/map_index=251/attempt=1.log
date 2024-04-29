@@ -1,0 +1,15 @@
+[2024-04-23T13:10:56.740+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline_eq.push_in_redis manual__2024-04-23T11:54:48.966898+00:00 map_index=251 [queued]>
+[2024-04-23T13:10:56.759+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline_eq.push_in_redis manual__2024-04-23T11:54:48.966898+00:00 map_index=251 [queued]>
+[2024-04-23T13:10:56.759+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-23T13:10:56.772+0000] {taskinstance.py:2217} INFO - Executing <Mapped(_PythonDecoratedOperator): push_in_redis> on 2024-04-23 11:54:48.966898+00:00
+[2024-04-23T13:10:56.777+0000] {standard_task_runner.py:60} INFO - Started process 197243 to run task
+[2024-04-23T13:10:56.779+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline_eq', 'push_in_redis', 'manual__2024-04-23T11:54:48.966898+00:00', '--job-id', '623', '--raw', '--subdir', 'DAGS_FOLDER/kbs/custom_dags/pipeline_eq.py', '--cfg-path', '/tmp/tmpbvio43tt', '--map-index', '251']
+[2024-04-23T13:10:56.779+0000] {standard_task_runner.py:88} INFO - Job 623: Subtask push_in_redis
+[2024-04-23T13:10:56.804+0000] {task_command.py:423} INFO - Running <TaskInstance: pipeline_eq.push_in_redis manual__2024-04-23T11:54:48.966898+00:00 map_index=251 [running]> on host datalab-yasmine
+[2024-04-23T13:10:56.949+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='pipeline_eq' AIRFLOW_CTX_TASK_ID='push_in_redis' AIRFLOW_CTX_EXECUTION_DATE='2024-04-23T11:54:48.966898+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-23T11:54:48.966898+00:00'
+[2024-04-23T13:10:56.950+0000] {pipeline_eq.py:90} INFO - start to push data in redis
+[2024-04-23T13:10:58.083+0000] {pipeline_eq.py:96} INFO - TE_502.json in redis
+[2024-04-23T13:10:58.083+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-04-23T13:10:58.088+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=pipeline_eq, task_id=push_in_redis, map_index=251, execution_date=20240423T115448, start_date=20240423T131056, end_date=20240423T131058
+[2024-04-23T13:10:58.119+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-23T13:10:58.127+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check
