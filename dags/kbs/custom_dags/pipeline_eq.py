@@ -46,7 +46,7 @@ def equipement_process():
         #dates = {"start": exec_date.split(".")[0], "end": datetime.now().strftime("%Y-%m-%d %H:%M:%S") }
         dates = {"start": "2023-03-01 00:00:00", "end": datetime.now().strftime("%Y-%m-%d %H:%M:%S") }
         filename = f"dates_{exec_date.split()[0].replace('-', '')}"
-        save_files_minio(dates, filename+".json", "intervalles")
+        save_files_minio(MINIO_CLIENT, dates, filename+".json", "intervalles")
         return filename
 
 
@@ -63,7 +63,7 @@ def equipement_process():
             List of names of all files that match the given criteria
         """
         logging.info("get date")
-        dates_files = read_files(bucket="intervalles", prefix=date_prefix)
+        dates_files = read_files(MINIO_CLIENT, bucket="intervalles", prefix=date_prefix)
         if not dates_files:
             raise FileExistsError("No date file found")
         
