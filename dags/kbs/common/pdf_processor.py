@@ -2,6 +2,7 @@ import json
 import fitz
 from pathlib import Path
 from minio import Minio
+from io import BytesIO
 
 
 def file_downloader(
@@ -24,23 +25,24 @@ def file_uploader(
 
 
 def process_pdf_file(
-    filepath: Path,
-    output_images_path: Path = Path("./images"),
+    filepath: str,
+    pdf: BytesIO ,
+    #output_images_path: Path = Path("./images"),
     upload_images_to_minio: bool = False,
     minio_client: Minio = None,
     minio_bucket: str = "",
 ):
     output_dict = {
-        "name": filepath.parts[-1],
-        "path": str(filepath),
+        "name": filepath.split("/")[-1],
+        "path": filepath,
         "type": "TYPE",
         "rubrique": "RU",
-        "extension": filepath.name.split(".")[-1],
+        "extension": filepath.split("/")[-1].split(".")[-1],
         "spec_doc": False,
         "tags": [],
         "content": {"pages": []},
     }
-    doc = fitz.open(filepath, filetype="pdf") ## can replace by str
+    doc = fitz.open(pdf, filetype="pdf") ## can replace by str
     for page_num, page in enumerate(doc, start=1):  # iterate the document pages
         page_data = {"id": page_num, "fulltext": "", "tables": [], "images": []}
         text_content = (
@@ -57,8 +59,7 @@ def process_pdf_file(
             if pix.n - pix.alpha > 3:  # CMYK: convert to RGB first
                 pix = fitz.Pixmap(fitz.csRGB, pix)
             img_path = Path(
-                output_images_path
-                / f'{output_dict.get("name")}_page_{page_num}-image_{image_index}.png'
+                 f'{output_dict.get("name")}_page_{page_num}-image_{image_index}.png'
             )
 
             img_path.unlink(missing_ok=True)  # Delete in case alreayd exists
@@ -89,40 +90,40 @@ def process_pdf_file(
     return json.dumps(output_dict)
 
 
-if __name__ == "__main__":
-    # Read Config file
-    with open("./minio_credentials.json") as creds_file:
-        config_data = json.load(creds_file)
-        # print(config_data)
+# if __name__ == "__main__":
+#     # Read Config file
+#     with open("./minio_credentials.json") as creds_file:
+#         config_data = json.load(creds_file)
+#         # print(config_data)
 
-    # Initiate connection with MinIO Server
-    client = Minio(
-        endpoint=config_data["url"],
-        access_key=config_data["accessKey"],
-        secret_key=config_data["secretKey"],
-        secure=config_data.get("secure", False),
-    )
-    BUCKET_NAME = "siaap-doe"
-    PROCESSED_BUCKET_NAME = "siaap-doe-processed"
+#     # Initiate connection with MinIO Server
+#     client = Minio(
+#         endpoint=config_data["url"],
+#         access_key=config_data["accessKey"],
+#         secret_key=config_data["secretKey"],
+#         secure=config_data.get("secure", False),
+#     )
+#     BUCKET_NAME = "siaap-doe"
+#     PROCESSED_BUCKET_NAME = "siaap-doe-processed"
 
-    # Download the file to be processed
-    infile = file_downloader(
-        minio_client=client,
-        bucket=BUCKET_NAME,
-        filepath="raw/FDSACID.PDF",
-        outpath=Path("/tmp"),
-    )
-    # infile = Path("data/datatest/1115 00x00-00 000000 Eq Lis 001 PDR INSTRM DOE.pdf")
-    result = process_pdf_file(
-        filepath=infile,
-        upload_images_to_minio=True,
-        minio_client=client,
-        minio_bucket=PROCESSED_BUCKET_NAME,
-        output_images_path=Path("data/processed/images"),
-    )
+#     # Download the file to be processed
+#     infile = file_downloader(
+#         minio_client=client,
+#         bucket=BUCKET_NAME,
+#         filepath="raw/FDSACID.PDF",
+#         outpath=Path("/tmp"),
+#     )
+#     # infile = Path("data/datatest/1115 00x00-00 000000 Eq Lis 001 PDR INSTRM DOE.pdf")
+#     result = process_pdf_file(
+#         filepath=infile,
+#         upload_images_to_minio=True,
+#         minio_client=client,
+#         minio_bucket=PROCESSED_BUCKET_NAME,
+#         output_images_path=Path("data/processed/images"),
+#     )
 
-    # Write result to a file
-    with open("sample_output_2.json", "w") as outfile:
-        outfile.write(result)
+#     # Write result to a file
+#     with open("sample_output_2.json", "w") as outfile:
+#         outfile.write(result)
 
-    print(result)
+#     print(result)

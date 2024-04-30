@@ -14,6 +14,7 @@ from airflow.models.dag import DAG
 from airflow.models import Variable
 from kbs.common.rw import save_files_minio, read_files
 from kbs.common.script_extraction import extract
+from kbs.common.pdf_processor import process_pdf_file
 
 
 
@@ -47,9 +48,9 @@ def equipement_process():
     def gen_dates(exec_date):
         """ """
         #dates = {"start": exec_date.split(".")[0], "end": datetime.now().strftime("%Y-%m-%d %H:%M:%S") }
-        dates = {"start": "2023-03-01 00:00:00", "end": datetime.now().strftime("%Y-%m-%d %H:%M:%S") }
+        dates = {"start": "2023-03-01 00:00:00", "end": datetime.now().strftime("%Y-%m-%d %H:%M:%S") } # first launch
         filename = f"dates_{exec_date.split()[0].replace('-', '')}"
-        save_files_minio(dates, filename+".json", "intervalles")
+        save_files_minio(MINIO_CLIENT, dates, filename+".json", "intervalles")
         return filename
 
 
@@ -66,7 +67,7 @@ def equipement_process():
             List of names of all files that match the given criteria
         """
         logging.info("get date")
-        dates_files = read_files(bucket="intervalles", prefix=date_prefix)
+        dates_files = read_files(MINIO_CLIENT, bucket="intervalles", prefix=date_prefix)
         if not dates_files:
             raise FileExistsError("No date file found")
         
@@ -75,15 +76,9 @@ def equipement_process():
         logging.info("start to get objects in minio")
         extensions = ['.pdf', '.xls', '.xlsx'] 
         # objects = MINIO_CLIENT.list_objects(CONFIG["bucket"],recursive=True)
-        objects = MINIO_CLIENT.list_objects('siaap-doe',recursive=True)
-        print(f"intervals is {intervals}")
-        if not objects:
-            raise RuntimeError(f"No file found")
-        good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) and datetime.strptime(intervals["start"], "%Y-%m-%d %H:%M:%S")<obj.last_modified.replace(tzinfo=None, microsecond=0) <=  datetime.strptime(intervals["end"], "%Y-%m-%d %H:%M:%S") ]
+        objects = read_files(minio_client=MINIO_CLIENT,bucket= 'siaap-doe',intervals=intervals, extensions=extensions )
 
-        # if not good_objects:
-        #     raise ValueError(f"No files found with good extensions {extensions}")
-        return good_objects
+        return objects
     
     @task
     def push_in_redis(obj):
@@ -91,11 +86,13 @@ def equipement_process():
         logging.info("start to push data in redis")
         #file = MINIO_CLIENT.get_object(CONFIG["bucket"], obj)
         file = MINIO_CLIENT.get_object('siaap-doe', obj)
-        if obj.lower().endswith([".xls", ".xlsx"]):
-            data = extract(file.data)
-            data = json.dumps(data, ensure_ascii=False, indent=2)
+        file_in_bio = io.BytesIO(file.data)
+        if obj.lower().endswith((".pdf")):
+            data = process_pdf_file(obj, file_in_bio, True, MINIO_CLIENT, "images")
         #if obj.lower().endswith(".pdf"):
-            
+        elif obj.lower().endswith((".xls", "xlsx")):
+
+            data = json.load(io.BytesIO(file.data))
         else:
             data = json.load(io.BytesIO(file.data))
         key = str(uuid.uuid1)

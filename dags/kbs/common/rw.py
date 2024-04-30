@@ -2,6 +2,7 @@ import logging
 from typing import List
 import json
 import io
+from datetime import datetime
 from minio import Minio
 import redis
 from redis.commands.json import path
@@ -29,7 +30,7 @@ from neo4j import GraphDatabase
 
 
 
-def read_files(minio_client, bucket, prefix=None, extensions: List[str] = None) -> List[str]:
+def read_files(minio_client, bucket,intervals:dict=None, prefix=None, extensions: List[str] = None) -> List[str]:
     """
     Get a list of names of all files in the bucket that match the given prefix and extensions.
     Args:
@@ -49,7 +50,8 @@ def read_files(minio_client, bucket, prefix=None, extensions: List[str] = None) 
 
     if not objects:
         raise RuntimeError(f"No file found")
-    good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) ]
+    good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) and datetime.strptime(intervals["start"], "%Y-%m-%d %H:%M:%S")<obj.last_modified.replace(tzinfo=None, microsecond=0) <=  datetime.strptime(intervals["end"], "%Y-%m-%d %H:%M:%S") ]
+    
     if not good_objects:
         raise ValueError(f"No files found with good extensions {extensions}")
     return good_objects
