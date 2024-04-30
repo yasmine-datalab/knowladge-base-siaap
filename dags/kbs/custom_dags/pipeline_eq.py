@@ -43,8 +43,8 @@ def equipement_process():
     @task
     def gen_dates(exec_date):
         """ """
-        #dates = {"start": exec_date.split(".")[0], "end": datetime.now().strftime("%Y-%m-%d %H:%M:%S") }
-        dates = {"start": "2023-03-01 00:00:00", "end": datetime.now().strftime("%Y-%m-%d %H:%M:%S") }
+        dates = {"start": exec_date.split(".")[0], "end": datetime.now().strftime("%Y-%m-%d %H:%M:%S") }
+        #dates = {"start": "2023-03-01 00:00:00", "end": datetime.now().strftime("%Y-%m-%d %H:%M:%S") }
         filename = f"dates_{exec_date.split()[0].replace('-', '')}"
         save_files_minio(MINIO_CLIENT, dates, filename+".json", "intervalles")
         return filename
