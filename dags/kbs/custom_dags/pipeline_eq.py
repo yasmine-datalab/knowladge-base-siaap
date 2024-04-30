@@ -93,6 +93,7 @@ def equipement_process():
         print(f'type file.data {type(file.data)}')
         data = json.load(io.BytesIO(file.data))
         key = str(uuid.uuid1)
+        print(key)
         REDIS_CLIENT.json().set(key, path.Path.root_path(), data)
         logging.info(f"{obj.split()[-1]} in redis")
 
