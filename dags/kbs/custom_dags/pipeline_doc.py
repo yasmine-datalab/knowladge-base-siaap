@@ -33,7 +33,7 @@ REDIS_CLIENT = redis.Redis(
 #         access_key= "X8IFd1Ew33jXamOEVGZa",
 #         secret_key= "tRQ4Yd8j7ykJ29dfKabmretrcFryHQIuqCMGvDvB"
 #         )
-MINIO_CLIENT = Minio(MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY)
+MINIO_CLIENT = Minio(MINIO_ENDPOINT, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, secure=False)
 
 default_args = {
     'start_date': datetime(2024, 3, 1),
