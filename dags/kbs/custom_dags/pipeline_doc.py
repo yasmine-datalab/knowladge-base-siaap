@@ -42,7 +42,7 @@ default_args = {
 
 @dag(dag_id= "pipeline_doc", default_args= default_args, catchup=True, schedule_interval=None)
     
-def equipement_process():
+def docs_process():
     """"""
     @task
     def gen_dates(exec_date):
@@ -73,12 +73,18 @@ def equipement_process():
         
         file = MINIO_CLIENT.get_object("intervalles", dates_files[0])
         intervals = json.load(io.BytesIO(file.data))
+        print(f"intervals is {intervals}")
         logging.info("start to get objects in minio")
-        extensions = ['.pdf', '.xls', '.xlsx'] 
+        extensions = ['.pdf'] 
         # objects = MINIO_CLIENT.list_objects(CONFIG["bucket"],recursive=True)
-        objects = read_files(minio_client=MINIO_CLIENT,bucket= 'siaap-doe',intervals=intervals, extensions=extensions )
+        #objects = read_files(minio_client=MINIO_CLIENT,bucket= 'siaap-doe',intervals=intervals, extensions=extensions )
+        objects = MINIO_CLIENT.list_objects("siaap-doe",recursive=True)
+        print(f"intervals is {intervals}")
+        if not objects:
+            raise RuntimeError(f"No file found")
+        good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) and datetime.strptime(intervals["start"], "%Y-%m-%d %H:%M:%S")<obj.last_modified.replace(tzinfo=None, microsecond=0) <=  datetime.strptime(intervals["end"], "%Y-%m-%d %H:%M:%S") ]
 
-        return objects
+        return good_objects
     
     @task
     def push_in_redis(obj):
@@ -105,4 +111,4 @@ def equipement_process():
     
     
 
-pipeline_equipement = equipement_process()
+pipeline_equipement = docs_process()
