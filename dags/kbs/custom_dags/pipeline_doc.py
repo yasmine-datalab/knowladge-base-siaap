@@ -81,9 +81,10 @@ def docs_process():
         objects = MINIO_CLIENT.list_objects("siaap-doe",recursive=True)
         if not objects:
             raise RuntimeError(f"No file found")
-        good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) and datetime.strptime(intervals["start"], "%Y-%m-%d %H:%M:%S")<obj.last_modified.replace(tzinfo=None, microsecond=0) <=  datetime.strptime(intervals["end"], "%Y-%m-%d %H:%M:%S") ]
-
-        return good_objects
+        #good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) and datetime.strptime(intervals["start"], "%Y-%m-%d %H:%M:%S")<obj.last_modified.replace(tzinfo=None, microsecond=0) <=  datetime.strptime(intervals["end"], "%Y-%m-%d %H:%M:%S") ]
+        for obj in objects:
+            print(obj.object_name)
+        #return good_objects
     
     @task
     def push_in_redis(obj):
