@@ -30,7 +30,7 @@ def process_pdf_file(
     #output_images_path: Path = Path("./images"),
     upload_images_to_minio: bool = False,
     minio_client: Minio = None,
-    minio_bucket: str = "images",
+    image_bucket: str = "images",
 ):
     output_dict = {
         "name": filepath.split("/")[-1],
@@ -58,27 +58,41 @@ def process_pdf_file(
 
             if pix.n - pix.alpha > 3:  # CMYK: convert to RGB first
                 pix = fitz.Pixmap(fitz.csRGB, pix)
-            img_path = Path(
-                 f'{output_dict.get("name")}_page_{page_num}-image_{image_index}.png'
-            )
+            image_stream = BytesIO()
 
-            img_path.unlink(missing_ok=True)  # Delete in case alreayd exists
-            img_path.mkdir(
-                parents=True, exist_ok=True
-            )  # Create parents dirs it not existing
-            pix.save(img_path)  # save the image as png
+            # img_path = Path(
+            #      f'{output_dict.get("name")}_page_{page_num}-image_{image_index}.png'
+            # )
+
+            # img_path.unlink(missing_ok=True)  # Delete in case alreayd exists
+            # img_path.mkdir(
+            #     parents=True, exist_ok=True
+            # )  # Create parents dirs it not existing
+            pix.save(image_stream, "png")  # save the image as png
+            image_stream.seek(0)
 
             # Upload the image to bucket
-            if upload_images_to_minio:
-                img_fullpath = file_uploader(
-                    filepath=str(img_path),
-                    minio_client=minio_client,
-                    bucket=minio_bucket,
-                    parent_folders=str(img_path.parent),
-                )
-                page_data["images"].append(str(img_fullpath))
-            else:
-                page_data["images"].append(str(img_path.absolute()))
+            # if upload_images_to_minio:
+            #     img_fullpath = file_uploader(
+            #         filepath=str(img_path),
+            #         minio_client=minio_client,
+            #         bucket=minio_bucket,
+            #         parent_folders=str(img_path.parent),
+            #     )
+            #     page_data["images"].append(str(img_fullpath))
+            # else:
+            #     page_data["images"].append(str(img_path.absolute()))
+            if not minio_client.bucket_exists(image_bucket):
+                minio_client.make_bucket(image_bucket)
+            image_name = f'{output_dict.get("name")}_page_{page_num}-image_{image_index}.png'
+            result = minio_client.put_object(
+            image_bucket,
+            image_name,
+            data=image_stream,
+            length=image_stream.getbuffer().nbytes,
+            content_type="image/png"
+            )
+            page_data["images"].append(str(result.object_name))
             pix = None
         tables = page.find_tables()
         for tab in tables:
