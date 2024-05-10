@@ -42,7 +42,7 @@ def process_pdf_file(
         "tags": [],
         "content": {"pages": []},
     }
-    doc = fitz.open(pdf, filetype="pdf") ## can replace by str
+    doc = fitz.open(stream=pdf, filetype="pdf") ## can replace by str
     for page_num, page in enumerate(doc, start=1):  # iterate the document pages
         page_data = {"id": page_num, "fulltext": "", "tables": [], "images": []}
         text_content = (
