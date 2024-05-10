@@ -58,7 +58,7 @@ def process_pdf_file(
 
             if pix.n - pix.alpha > 3:  # CMYK: convert to RGB first
                 pix = fitz.Pixmap(fitz.csRGB, pix)
-            image_stream = BytesIO()
+            image_stream = BytesIO(pix.tobytes(output="png"))
 
             # img_path = Path(
             #      f'{output_dict.get("name")}_page_{page_num}-image_{image_index}.png'
@@ -68,7 +68,7 @@ def process_pdf_file(
             # img_path.mkdir(
             #     parents=True, exist_ok=True
             # )  # Create parents dirs it not existing
-            pix.save(image_stream)  # save the image as png
+            #pix.save(image_stream)  # save the image as png
             image_stream.seek(0)
 
             # Upload the image to bucket
