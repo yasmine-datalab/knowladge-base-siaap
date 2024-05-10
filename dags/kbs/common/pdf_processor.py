@@ -30,7 +30,7 @@ def process_pdf_file(
     #output_images_path: Path = Path("./images"),
     upload_images_to_minio: bool = False,
     minio_client: Minio = None,
-    minio_bucket: str = "",
+    minio_bucket: str = "images",
 ):
     output_dict = {
         "name": filepath.split("/")[-1],
@@ -71,7 +71,7 @@ def process_pdf_file(
             # Upload the image to bucket
             if upload_images_to_minio:
                 img_fullpath = file_uploader(
-                    filepath=img_path,
+                    filepath=str(img_path),
                     minio_client=minio_client,
                     bucket=minio_bucket,
                     parent_folders=str(img_path.parent),

@@ -50,8 +50,11 @@ def read_files(minio_client, bucket,intervals:dict=None, prefix=None, extensions
 
     if not objects:
         raise RuntimeError(f"No file found")
-    good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) and datetime.strptime(intervals["start"], "%Y-%m-%d %H:%M:%S")<obj.last_modified.replace(tzinfo=None, microsecond=0) <=  datetime.strptime(intervals["end"], "%Y-%m-%d %H:%M:%S") ]
-    
+    if intervals:
+        good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) and datetime.strptime(intervals["start"], "%Y-%m-%d %H:%M:%S")<obj.last_modified.replace(tzinfo=None, microsecond=0) <=  datetime.strptime(intervals["end"], "%Y-%m-%d %H:%M:%S") ]
+    else:
+        good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions))]
+
     if not good_objects:
         raise ValueError(f"No files found with good extensions {extensions}")
     return good_objects

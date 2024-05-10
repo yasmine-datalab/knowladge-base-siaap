@@ -77,14 +77,14 @@ def docs_process():
         logging.info("start to get objects in minio")
         extensions = ['.pdf'] 
         # objects = MINIO_CLIENT.list_objects(CONFIG["bucket"],recursive=True)
-        #objects = read_files(minio_client=MINIO_CLIENT,bucket= 'siaap-doe',intervals=intervals, extensions=extensions )
-        objects = MINIO_CLIENT.list_objects("siaap-doe",recursive=True)
-        if not objects:
-            raise RuntimeError(f"No file found")
-        #good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) and datetime.strptime(intervals["start"], "%Y-%m-%d %H:%M:%S")<obj.last_modified.replace(tzinfo=None, microsecond=0) <=  datetime.strptime(intervals["end"], "%Y-%m-%d %H:%M:%S") ]
-        for obj in objects:
-            print(obj.object_name)
-        #return good_objects
+        objects = read_files(minio_client=MINIO_CLIENT,bucket= 'siaap-doe',intervals=intervals, extensions=extensions )
+        # objects = MINIO_CLIENT.list_objects("siaap-doe",recursive=True)
+        # if not objects:
+        #     raise RuntimeError(f"No file found")
+        # #good_objects = [obj.object_name for obj in objects if obj.object_name.lower().endswith(tuple(extensions)) and datetime.strptime(intervals["start"], "%Y-%m-%d %H:%M:%S")<obj.last_modified.replace(tzinfo=None, microsecond=0) <=  datetime.strptime(intervals["end"], "%Y-%m-%d %H:%M:%S") ]
+        # for obj in objects:
+        #     print(obj.object_name)
+        return objects
     
     @task
     def push_in_redis(obj):
