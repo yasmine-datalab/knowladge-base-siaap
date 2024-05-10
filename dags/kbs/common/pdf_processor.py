@@ -68,7 +68,7 @@ def process_pdf_file(
             # img_path.mkdir(
             #     parents=True, exist_ok=True
             # )  # Create parents dirs it not existing
-            pix.save(image_stream, "png")  # save the image as png
+            pix.save(image_stream)  # save the image as png
             image_stream.seek(0)
 
             # Upload the image to bucket
