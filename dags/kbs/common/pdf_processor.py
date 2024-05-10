@@ -56,8 +56,10 @@ def process_pdf_file(
             xref = img[0]  # get the XREF of the image
             pix = fitz.Pixmap(doc, xref)  # create a Pixmap
 
-            if pix.n < 4:  # CMYK: convert to RGB first
+            if pix.n - pix.alpha > 3:  # CMYK: convert to RGB first
                 pix = fitz.Pixmap(fitz.csRGB, pix)
+            if pix.colorspace is not fitz.csRGB:
+                pix = fitz.Pixmap(pix, fitz.csRGB)
             image_stream = BytesIO(pix.tobytes(output="png"))
 
             # img_path = Path(
