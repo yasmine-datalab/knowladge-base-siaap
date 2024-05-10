@@ -86,7 +86,8 @@ def process_pdf_file(
             #     page_data["images"].append(str(img_path.absolute()))
             if not minio_client.bucket_exists(image_bucket):
                 minio_client.make_bucket(image_bucket)
-            image_name = f'{output_dict.get("name")}_page_{page_num}-image_{image_index}.png'
+            name_without_space = output_dict["name"].replace(" ", "")
+            image_name = f'{name_without_space}_page_{page_num}-image_{image_index}.png'
             result = minio_client.put_object(
             image_bucket,
             image_name,
