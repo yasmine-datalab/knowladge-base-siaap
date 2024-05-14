@@ -49,22 +49,32 @@ def process_pdf_file(
             page.get_text().encode("utf8").decode("utf-8")
         )  # get plain text (is in UTF-8)
         page_data.update({"fulltext": text_content})
-        images_list = page.get_images()
+        images_list = page.get_images(full = True)
         for image_index, img in enumerate(
             images_list, start=1
         ):  # enumerate the image list
-            xref = img[0]  # get the XREF of the image
-            pix = fitz.Pixmap(doc, xref)  # create a Pixmap
-            if pix.n < 3 or not pix.colorspace:
-                raise ValueError("Le Pixmap source n'est pas correctement initialisé ou l'espace de couleur est None")
+            xref = img[0]  # Récupérer le XREF de l'image
+            if xref not in doc.xref_get_all():  # Vérifie si le XREF est valide
+                print(f"XREF {xref} non valide ou corrompu.")
+                continue  # Passer à l'image suivante si le XREF est invalide
 
-            # Si l'espace de couleur est CMYK, convertissez-le en RGB
+            try:
+                pix = fitz.Pixmap(doc, xref)  # Tenter de créer un Pixmap
+            except Exception as e:
+                print(f"Erreur lors de la création du Pixmap pour l'image {image_index} avec XREF {xref}: {e}")
+                continue
+
+            if not pix.colorspace:
+                print(f"Le Pixmap de l'image {image_index} n'a pas d'espace de couleur défini.")
+                pix = None  # Libérer le Pixmap
+                continue
+
             if pix.colorspace.name == fitz.csCMYK.name:
-                pix = fitz.Pixmap(fitz.csRGB, pix)  # Convertir de CMYK à RGB
-
-
-            if pix.n  < 3 or not pix.colorspace.name in (fitz.csGRAY.name, fitz.csRGB.name):  # CMYK: convert to RGB first
-                pix = fitz.Pixmap(fitz.csRGB, pix)
+                pix1 = fitz.Pixmap(fitz.csRGB, pix)  # Convertir de CMYK à RGB
+                pix = pix1
+                pix1 = None
+            # if pix.n  < 3 or not pix.colorspace.name in (fitz.csGRAY.name, fitz.csRGB.name):  # CMYK: convert to RGB first
+            #     pix = fitz.Pixmap(fitz.csRGB, pix)
            
             # if pix.colorspace is not fitz.csRGB:
             #     pix = fitz.Pixmap(pix, fitz.csRGB)
