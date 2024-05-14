@@ -54,10 +54,6 @@ def process_pdf_file(
             images_list, start=1
         ):  # enumerate the image list
             xref = img[0]  # Récupérer le XREF de l'image
-            if xref not in doc.xref_get_all():  # Vérifie si le XREF est valide
-                print(f"XREF {xref} non valide ou corrompu.")
-                continue  # Passer à l'image suivante si le XREF est invalide
-
             try:
                 pix = fitz.Pixmap(doc, xref)  # Tenter de créer un Pixmap
             except Exception as e:
